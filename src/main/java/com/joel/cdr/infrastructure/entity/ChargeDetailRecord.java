@@ -20,17 +20,22 @@ public class ChargeDetailRecord {
     @Column(name = "end_time")
     private LocalDateTime endTime;
 
+    @Column(name = "cost")
+    private Double cost;
+
     public ChargeDetailRecord() {}
 
     public ChargeDetailRecord(
             Long id,
             String carId,
             LocalDateTime startTime,
-            LocalDateTime endTime) {
+            LocalDateTime endTime,
+            Double cost) {
         this.id = id;
         this.carId = carId;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.cost = cost;
     }
 
     public Long getId() {
@@ -49,6 +54,8 @@ public class ChargeDetailRecord {
         return endTime;
     }
 
+    public Double getCost() { return cost; }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -64,4 +71,6 @@ public class ChargeDetailRecord {
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
+
+    public void setCost(Double cost) { this.cost = cost; }
 }

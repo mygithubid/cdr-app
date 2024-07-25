@@ -42,7 +42,8 @@ class FindByIdImplTest {
                 1L,
                 "carId",
                 start,
-                end
+                end,
+                1.0
         );
         when(chargeDetailRecordGateway.findById(1L)).thenReturn(Optional.of(domain));
 

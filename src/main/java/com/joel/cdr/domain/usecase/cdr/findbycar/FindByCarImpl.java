@@ -30,7 +30,8 @@ public class FindByCarImpl implements FindByCar {
                 domainChargeDetailRecord.id(),
                 domainChargeDetailRecord.carId(),
                 domainChargeDetailRecord.startTime(),
-                domainChargeDetailRecord.endTime()
+                domainChargeDetailRecord.endTime(),
+                domainChargeDetailRecord.cost()
         );
     }
 }

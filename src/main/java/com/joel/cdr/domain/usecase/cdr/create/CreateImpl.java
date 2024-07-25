@@ -36,7 +36,8 @@ public class CreateImpl implements Create {
                     null,
                     chargeDetailRecord.carId(),
                     chargeDetailRecord.startTime(),
-                    chargeDetailRecord.endTime()
+                    chargeDetailRecord.endTime(),
+                    chargeDetailRecord.cost()
             );
 
             var savedDomain = chargeDetailRecordGateway.save(domainDeviceRequest);
@@ -44,7 +45,8 @@ public class CreateImpl implements Create {
                     savedDomain.id(),
                     savedDomain.carId(),
                     savedDomain.startTime(),
-                    savedDomain.endTime()
+                    savedDomain.endTime(),
+                    savedDomain.cost()
             );
         }
     }

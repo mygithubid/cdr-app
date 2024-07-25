@@ -39,27 +39,31 @@ class CreateImplTest {
                 null,
                 "carId",
                 start,
-                end
+                end,
+                1.0
         );
 
         when(chargeDetailRecordGateway.findAll()).thenAnswer(invocationOnMock -> Arrays.asList(new com.joel.cdr.domain.model.ChargeDetailRecord(
                 1L,
                 "carId",
                 start.minusDays(2),
-                start.minusDays(1)
+                start.minusDays(1),
+                1.0
         )));
         when(chargeDetailRecordGateway.save(domain)).thenAnswer(invocationOnMock -> new com.joel.cdr.domain.model.ChargeDetailRecord(
                 1L,
                 "carId",
                 start,
-                end
+                end,
+                1.0
         ));
 
         var record = new ChargeDetailRecord(
                 1L,
                 "carId",
                 start,
-                end
+                end,
+                1.0
         );
 
         var savedRecord = createImpl.execute(record);
@@ -80,27 +84,31 @@ class CreateImplTest {
                 null,
                 "carId",
                 start,
-                end
+                end,
+                1.0
         );
 
         when(chargeDetailRecordGateway.findAll()).thenAnswer(invocationOnMock -> Arrays.asList(new com.joel.cdr.domain.model.ChargeDetailRecord(
                 1L,
                 "carId",
                 start,
-                start
+                start,
+                1.0
         )));
         when(chargeDetailRecordGateway.save(domain)).thenAnswer(invocationOnMock -> new com.joel.cdr.domain.model.ChargeDetailRecord(
                 1L,
                 "carId",
                 start,
-                end
+                end,
+                1.0
         ));
 
         var record = new ChargeDetailRecord(
                 1L,
                 "carId",
                 start,
-                end
+                end,
+                1.0
         );
 
         assertThatThrownBy(() -> createImpl.execute(record))

@@ -41,7 +41,8 @@ class FindByCarImplTest {
                 1L,
                 "carId",
                 start,
-                end
+                end,
+                1.0
         );
         when(chargeDetailRecordGateway.findAll()).thenReturn(List.of(record));
 

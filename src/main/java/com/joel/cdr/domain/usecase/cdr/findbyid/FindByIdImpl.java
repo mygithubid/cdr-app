@@ -27,7 +27,8 @@ public class FindByIdImpl implements FindById {
                 record.id(),
                 record.carId(),
                 record.startTime(),
-                record.endTime()
+                record.endTime(),
+                record.cost()
         ));
     }
 }

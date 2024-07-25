@@ -45,7 +45,8 @@ public class ChargeDetailRecordResource {
                 null,
                 request.carId(),
                 request.startTime(),
-                request.endTime()
+                request.endTime(),
+                request.cost()
         );
 
         var user = create.execute(recordRequest);
@@ -63,7 +64,8 @@ public class ChargeDetailRecordResource {
                 chargeDetailRecord.id(),
                 chargeDetailRecord.carId(),
                 chargeDetailRecord.startTime(),
-                chargeDetailRecord.endTime()
+                chargeDetailRecord.endTime(),
+                chargeDetailRecord.cost()
         );
     }
 }

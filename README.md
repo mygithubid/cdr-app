@@ -58,8 +58,9 @@ Use Java 1.8+
 Use the Spring Framework
 Use Maven or Gradle as a build tool
 Some additional guidelines
-Does your project have instructions on how to build and run it?
-Does your project consider any form of testing and coverage?
-Does your project implement any design pattern(s) to help you solve known issues?
+Does your project have instructions on how to build and run it? [Y]
+Does your project consider any form of testing and coverage? [Y]
+Does your project implement any design pattern(s) to help you solve known issues? [Y]
 Try to make your project as production ready as possible
 Transparency is key, so if there are any known bugs/issues it could be a good idea to document them
+    * Passwords should be encrypted

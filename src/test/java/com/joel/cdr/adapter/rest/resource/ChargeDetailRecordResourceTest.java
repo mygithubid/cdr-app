@@ -24,7 +24,8 @@ class ChargeDetailRecordResourceTest extends AbstractChargeDetailRecordAppResour
                 {
                   "carId": "string",
                   "startTime": "2024-01-30T23:52:31.128361",
-                  "endTime": "2024-01-30T23:52:32.128362"
+                  "endTime": "2024-01-30T23:52:32.128362",
+                  "cost": 1.0
                 }
                 """;
         when(create.execute(any())).thenReturn(
@@ -32,7 +33,8 @@ class ChargeDetailRecordResourceTest extends AbstractChargeDetailRecordAppResour
                         1L,
                         "string",
                         LocalDateTime.now(),
-                        LocalDateTime.now()
+                        LocalDateTime.now(),
+                        1.0
                 )
         );
         var mvcResult = mockMvc
@@ -53,7 +55,8 @@ class ChargeDetailRecordResourceTest extends AbstractChargeDetailRecordAppResour
                         1L,
                         "string",
                         LocalDateTime.now(),
-                        LocalDateTime.now()
+                        LocalDateTime.now(),
+                        1.0
                         )
                 )
         );
@@ -80,7 +83,8 @@ class ChargeDetailRecordResourceTest extends AbstractChargeDetailRecordAppResour
                                 1L,
                                 "string",
                                 LocalDateTime.now(),
-                                LocalDateTime.now()
+                                LocalDateTime.now(),
+                                1.0
                         )
                 )
         );

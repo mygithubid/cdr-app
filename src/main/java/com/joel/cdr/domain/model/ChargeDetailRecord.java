@@ -6,6 +6,7 @@ public record ChargeDetailRecord(
         Long id,
         String carId,
         LocalDateTime startTime,
-        LocalDateTime endTime
+        LocalDateTime endTime,
+        Double cost
 ) {
 }

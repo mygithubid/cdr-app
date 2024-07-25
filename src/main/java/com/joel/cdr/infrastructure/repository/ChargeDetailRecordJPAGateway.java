@@ -28,7 +28,8 @@ public class ChargeDetailRecordJPAGateway implements ChargeDetailRecordGateway {
                 chargeDetailRecord.id(),
                 chargeDetailRecord.carId(),
                 chargeDetailRecord.startTime(),
-                chargeDetailRecord.endTime());
+                chargeDetailRecord.endTime(),
+                chargeDetailRecord.cost());
         var persisted = chargeDetailRecordJPARepository.save(entity);
         return toRecord(persisted);
     }
@@ -43,7 +44,8 @@ public class ChargeDetailRecordJPAGateway implements ChargeDetailRecordGateway {
                 entity.getId(),
                 entity.getCarId(),
                 entity.getStartTime(),
-                entity.getEndTime()
+                entity.getEndTime(),
+                entity.getCost()
         );
     }
 }
