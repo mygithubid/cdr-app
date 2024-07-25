@@ -5,11 +5,14 @@ import com.joel.cdr.domain.usecase.cdr.model.ChargeDetailRecord;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class CreateImplTest {
 
@@ -27,12 +30,10 @@ class CreateImplTest {
     }
 
     @Test
-    void execute() {
-
+    void testSuccessWithNonOverlappingDates() {
         var start = LocalDateTime
                 .parse("2019-12-31T19:15:30");
-        var end = LocalDateTime
-                .parse("2019-12-31T19:30:30");
+        var end = start.plusMinutes(15);
 
         var domain = new com.joel.cdr.domain.model.ChargeDetailRecord(
                 null,
@@ -41,7 +42,13 @@ class CreateImplTest {
                 end
         );
 
-        Mockito.when(chargeDetailRecordGateway.save(domain)).thenAnswer(invocationOnMock -> new com.joel.cdr.domain.model.ChargeDetailRecord(
+        when(chargeDetailRecordGateway.findAll()).thenAnswer(invocationOnMock -> Arrays.asList(new com.joel.cdr.domain.model.ChargeDetailRecord(
+                1L,
+                "carId",
+                start.minusDays(2),
+                start.minusDays(1)
+        )));
+        when(chargeDetailRecordGateway.save(domain)).thenAnswer(invocationOnMock -> new com.joel.cdr.domain.model.ChargeDetailRecord(
                 1L,
                 "carId",
                 start,
@@ -61,5 +68,42 @@ class CreateImplTest {
         assertEquals(record.carId(), savedRecord.carId());
         assertEquals(record.startTime(), savedRecord.startTime());
         assertEquals(record.endTime(), savedRecord.endTime());
+    }
+
+    @Test
+    void testFailWithOverlappingDates() {
+        var start = LocalDateTime
+                .parse("2019-12-31T19:15:30");
+        var end = start.plusMinutes(15);
+
+        var domain = new com.joel.cdr.domain.model.ChargeDetailRecord(
+                null,
+                "carId",
+                start,
+                end
+        );
+
+        when(chargeDetailRecordGateway.findAll()).thenAnswer(invocationOnMock -> Arrays.asList(new com.joel.cdr.domain.model.ChargeDetailRecord(
+                1L,
+                "carId",
+                start,
+                start
+        )));
+        when(chargeDetailRecordGateway.save(domain)).thenAnswer(invocationOnMock -> new com.joel.cdr.domain.model.ChargeDetailRecord(
+                1L,
+                "carId",
+                start,
+                end
+        ));
+
+        var record = new ChargeDetailRecord(
+                1L,
+                "carId",
+                start,
+                end
+        );
+
+        assertThatThrownBy(() -> createImpl.execute(record))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -26,7 +26,7 @@ Flyway will create the necessary tables in the database
 
 Springdoc: http://localhost:8080/v3/api-docs
 
-Wagger: http://localhost:8080/swagger-ui/index.html
+Swagger: http://localhost:8080/swagger-ui/index.html
 
 The Project
 As an e-mobility charging solutions platform, we would like to provide a REST API that is capable of managing Charge Detail Records (CDR) in real time to a network of Charge Point Operators (CPO).

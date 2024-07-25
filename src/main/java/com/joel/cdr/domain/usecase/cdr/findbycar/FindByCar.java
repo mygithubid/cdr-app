@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface FindByCar {
 
-    List<ChargeDetailRecord> query(String brand);
+    List<ChargeDetailRecord> query(String carId);
 }
