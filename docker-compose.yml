@@ -14,7 +14,7 @@ services:
       - POSTGRES_PASSWORD=javateam
       - POSTGRES_DB=cdr-app
     ports:
-      - '5432:5432'
+      - ${DB_PORT:-5432}:5432
     volumes:
       - postgres_db:/var/lib/postgresql/data
 volumes:
